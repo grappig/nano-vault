@@ -1,0 +1,25 @@
+[package]
+name = "nano-vault"
+version = "0.1.0"
+edition = "2021"
+authors = ["aymeric"]
+description = "Hardware-Encrypted Offline Personal Ledger for Ledger Nano X"
+
+[dependencies]
+ledger_device_sdk = { version = "1", default-features = false }
+zeroize = { version = "1", default-features = false }
+
+[profile.release]
+codegen-units = 1
+lto = false
+opt-level = "z"
+panic = "abort"
+
+[package.metadata.ledger]
+name = "Nano Vault"
+flags = "0"
+curve = ["secp256k1"]
+path = ["44'/60'"]
+
+[package.metadata.ledger.nanox]
+icon = "nanox_icon.gif"
