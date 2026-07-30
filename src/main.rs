@@ -38,7 +38,16 @@ pub extern "C" fn sample_main() {
         nv_state_init(p_vault);
         nv_ui_init(p_ui);
 
-
+        // Add a sample entry to the vault
+        let label = b"Emergency Fund";
+        nv_state_add_entry(
+            p_vault,
+            1,
+            nv_category_t::NV_CAT_EMERGENCY,
+            label.as_ptr(),
+            label.len(),
+            500_00,
+        );
 
         nv_ui_next(p_ui, p_vault);
         
