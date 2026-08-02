@@ -12,7 +12,7 @@ This is a secure, completely offline vault for tracking personal finances, secre
 - [x] Basic project setup (Rust, `no_std`, `Makefile`)
 - [x] Set up state management and cryptography skeleton
 - [x] Integrate with Ledger SDK and compile to `.hex`
-- [ ] Implement on-device UI screens using Ledger's graphics library
+- [x] Implement on-device UI screens using Ledger's graphics library
 - [ ] Add APDU handlers for computer/companion app communication
 - [ ] Implement persistent storage (NVM) to save entries across reboots
 - [ ] Bind vault encryption securely to the Ledger's 24-word seed phrase
@@ -36,8 +36,9 @@ To test this application, you must use one of the following methods:
 
 ### Running with Speculos (Docker)
 
-You can run the application locally using the Speculos emulator via Docker. It will host a web interface on port 5000 so you can view and interact with the virtual device.
+You can run the application locally using the Speculos emulator via Docker. It will host a web interface on port 5001 so you can view and interact with the virtual device.
 
 ```bash
-docker run --rm -it -v "$(pwd):/app" -p 5000:5000 ghcr.io/ledgerhq/speculos --model nanox --display headless /app/target/nanox/release/nano-vault
+make docker-build
+make emulate
 ```
