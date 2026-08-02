@@ -6,12 +6,12 @@ authors = ["aymeric"]
 description = "Hardware-Encrypted Offline Personal Ledger for Ledger Nano X"
 
 [dependencies]
-ledger_device_sdk = { version = "1", default-features = false }
+ledger_device_sdk = { version = "1", default-features = false, features = ["heap", "sys"] }
 zeroize = { version = "1", default-features = false }
 
 [profile.release]
 codegen-units = 1
-lto = false
+lto = true
 opt-level = "z"
 panic = "abort"
 
